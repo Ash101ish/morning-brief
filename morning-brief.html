@@ -1,370 +1,461 @@
-<!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
-{
-  "name": "Morning Brief",
-  "schemaVersion": 1,
-  "description": "Daily morning brief: Indian portfolio (8 holdings), Nifty/Bank Nifty levels, sector snapshot, India macro (RBI, FII/DII, USD-INR), news & policy headlines, global context (US indices, Brent, gold), and next-session outlook. Refreshed daily ~8:30 AM IST by a scheduled task.",
-  "mcpTools": [],
-  "mcpServerNames": []
-}
-</script>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Morning Brief</title>
 <style>
-  :root { color-scheme: light; }
+  :root {
+    color-scheme: light;
+    --bg: #f5f0e8;
+    --ink: #141414;
+    --ink-soft: #4a4a4a;
+    --ink-faint: #7a7160;
+    --rule: #2a2a2a;
+    --rule-soft: #c9bfae;
+    --accent: #6b2c2c;
+    --accent-soft: #b04a3a;
+    --pos: #2e5c3a;
+    --neg: #8a2a2a;
+  }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    background: #ffffff;
-    color: #111827;
-    font-size: 15px;
-    line-height: 1.55;
-    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    font-feature-settings: "tnum" 1, "lnum" 1, "kern" 1;
     -webkit-font-smoothing: antialiased;
   }
   .wrap {
-    max-width: 740px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 28px 20px 80px;
+    padding: 48px 28px 96px;
   }
-  @media (min-width: 700px) {
-    .wrap { padding: 40px 32px 100px; }
+  @media (min-width: 720px) {
+    .wrap { padding: 72px 40px 120px; }
   }
-  .eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #6b7280;
-    font-weight: 500;
-  }
-  h1 {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin: 6px 0 4px;
-    color: #0f172a;
-  }
-  .subtitle {
-    color: #6b7280;
-    font-size: 14px;
-    margin-bottom: 36px;
-  }
-  h2 {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #6b7280;
-    font-weight: 600;
-    margin: 44px 0 14px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin: 20px 0 8px;
-    color: #1f2937;
-  }
-  p { margin: 0 0 10px; }
-  .muted { color: #6b7280; }
-  .num { font-variant-numeric: tabular-nums; }
-  .pos { color: #047857; }
-  .neg { color: #b91c1c; }
-  .flat { color: #6b7280; }
 
-  /* Hero summary */
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    padding: 18px 20px;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    background: #fafafa;
-  }
-  .hero .stat .label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #6b7280;
-    margin-bottom: 4px;
-  }
-  .hero .stat .value {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  .hero .stat .sub {
-    font-size: 13px;
-    margin-top: 2px;
-    color: #6b7280;
-  }
-  .pnl-row {
-    grid-column: 1 / -1;
+  /* Masthead */
+  .masthead {
+    border-top: 2px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 0 12px;
+    margin-bottom: 36px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding-top: 14px;
-    border-top: 1px solid #e5e7eb;
-  }
-  .pnl-row .label {
-    font-size: 12px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #6b7280;
+    color: var(--ink);
   }
-  .pnl-row .value {
-    font-size: 20px;
-    font-weight: 600;
+  .masthead .title { font-weight: 600; }
+  .masthead .date { color: var(--ink-soft); font-weight: 400; letter-spacing: 0.14em; }
+
+  /* Hero */
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 38px;
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  @media (min-width: 720px) { h1 { font-size: 44px; } }
+
+  .lede {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0 0 56px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  /* Section headings */
+  h2 {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--accent);
+    margin: 56px 0 18px;
+  }
+  h2::before {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 14px;
+  }
+  h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 400;
+    margin: 28px 0 8px;
+    color: var(--ink);
+  }
+  h4 {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 24px 0 10px;
+  }
+  p { margin: 0 0 16px; }
+  .num { font-variant-numeric: tabular-nums; }
+  .pos { color: var(--pos); }
+  .neg { color: var(--neg); }
+  .muted { color: var(--ink-soft); }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  /* Portfolio top-line */
+  .portfolio-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .portfolio-top .stat .label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2px;
+  }
+  .portfolio-top .stat .value {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .portfolio-top .stat .sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 2px;
   }
 
   /* Holdings table */
-  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -4px; padding: 0 4px; }
-  table.holdings {
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -8px; padding: 0 8px; }
+  table.holdings, table.idx-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
   }
   table.holdings th, table.holdings td {
-    padding: 10px 8px;
+    padding: 11px 8px;
     text-align: right;
     white-space: nowrap;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--rule-soft);
   }
   table.holdings th {
+    font-family: Georgia, serif;
     font-size: 11px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #6b7280;
-    font-weight: 500;
-    border-bottom: 1px solid #e5e7eb;
+    color: var(--ink-faint);
+    font-weight: 400;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
   }
   table.holdings th:first-child, table.holdings td:first-child {
     text-align: left;
   }
   table.holdings td:first-child {
-    font-weight: 600;
-  }
-  table.holdings td .ticker-sub {
-    display: block;
+    font-family: Georgia, serif;
+    font-size: 15px;
     font-weight: 400;
+  }
+  table.holdings td .sub {
+    display: block;
+    font-family: -apple-system, sans-serif;
     font-size: 11px;
-    color: #9ca3af;
-    margin-top: 1px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+    font-style: italic;
   }
   table.holdings tfoot td {
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--rule);
     border-bottom: none;
-    padding-top: 12px;
-    font-weight: 600;
+    padding-top: 14px;
+    font-family: Georgia, serif;
+    font-size: 15px;
   }
   table.holdings tfoot td:first-child {
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 11px;
-    color: #6b7280;
+    font-style: italic;
+    color: var(--ink-soft);
   }
 
-  /* Per-holding what-changed cards */
-  .holding-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-bottom: 12px;
-    background: #ffffff;
+  /* Indices tables */
+  .idx-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
-  .holding-card .head {
+  @media (min-width: 700px) {
+    .idx-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  table.idx-table th, table.idx-table td {
+    padding: 8px 6px;
+    text-align: right;
+    white-space: nowrap;
+  }
+  table.idx-table th {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+    border-bottom: 1px solid var(--rule);
+  }
+  table.idx-table td {
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  table.idx-table th:first-child, table.idx-table td:first-child {
+    text-align: left;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  table.idx-table tr:last-child td { border-bottom: none; }
+
+  /* Fund/holding "what changed" entries */
+  .holding {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .holding:last-child { border-bottom: none; }
+  .holding .top {
     display: flex;
-    align-items: baseline;
     justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
     margin-bottom: 8px;
   }
-  .holding-card .name {
-    font-weight: 600;
-    font-size: 15px;
-    color: #0f172a;
+  .holding .name {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 400;
   }
-  .holding-card .meta {
+  .holding .meta {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .holding ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+  }
+  .holding li {
+    font-size: 14.5px;
+    line-height: 1.6;
+    padding: 4px 0;
+    color: var(--ink);
+  }
+  .holding li .label {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-right: 8px;
+    vertical-align: 1px;
+    font-weight: 500;
+  }
+  .holding li .label.neg { color: var(--neg); }
+  .holding li .label.pos { color: var(--pos); }
+
+  /* Inline stat row (macro, global) */
+  .inline-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 32px;
+    margin: 4px 0 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  @media (min-width: 600px) {
+    .inline-stats { grid-template-columns: repeat(4, 1fr); }
+  }
+  .inline-stats .stat .label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2px;
+  }
+  .inline-stats .stat .value {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  .inline-stats .stat .sub {
     font-size: 12px;
-    color: #6b7280;
+    color: var(--ink-soft);
+    margin-top: 2px;
   }
-  .holding-card ul {
+
+  /* News list */
+  .news-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  .holding-card li {
-    font-size: 13.5px;
-    line-height: 1.5;
-    padding: 5px 0;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  .holding-card li:last-child { border-bottom: none; }
-  .holding-card .quiet {
-    font-size: 13px;
-    color: #6b7280;
-    font-style: italic;
-  }
-  .chip {
-    display: inline-block;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #4b5563;
-    background: #f3f4f6;
-    padding: 2px 7px;
-    border-radius: 4px;
-    margin-right: 6px;
-    vertical-align: middle;
-    font-weight: 500;
-  }
-  .chip-pos { background: #ecfdf5; color: #047857; }
-  .chip-neg { background: #fef2f2; color: #b91c1c; }
-  .chip-info { background: #eff6ff; color: #1d4ed8; }
-
-  /* Indices grid */
-  .idx-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13.5px;
-  }
-  .idx-table th, .idx-table td {
-    padding: 7px 8px;
-    text-align: right;
-    white-space: nowrap;
-  }
-  .idx-table th {
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #6b7280;
-    font-weight: 500;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  .idx-table td {
-    border-bottom: 1px solid #f1f5f9;
-  }
-  .idx-table th:first-child, .idx-table td:first-child {
-    text-align: left;
-    font-weight: 500;
-    color: #1f2937;
-  }
-  .idx-table tr:last-child td { border-bottom: none; }
-  .idx-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  @media (min-width: 700px) {
-    .idx-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  }
-
-  /* Generic stat grid */
-  .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px 24px;
-    margin: 8px 0 4px;
-  }
-  @media (min-width: 600px) {
-    .stat-grid { grid-template-columns: repeat(4, 1fr); }
-  }
-  .stat-grid .stat .label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #6b7280;
-    margin-bottom: 2px;
-  }
-  .stat-grid .stat .value {
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  .stat-grid .stat .sub {
-    font-size: 12px;
-    color: #6b7280;
-  }
-
-  /* News list */
-  .news-list { list-style: none; padding: 0; margin: 0; }
   .news-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid #f1f5f9;
-    font-size: 14px;
-    line-height: 1.5;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15px;
+    line-height: 1.6;
   }
   .news-list li:last-child { border-bottom: none; }
+  .news-list .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-right: 10px;
+    vertical-align: 1px;
+    font-weight: 500;
+  }
 
-  /* Outlook */
-  .levels {
+  /* Outlook dark block */
+  .outlook {
+    margin: 24px 0 8px;
+    padding: 32px 28px;
+    background: var(--ink);
+    color: #efe9dc;
+  }
+  .outlook .label {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #c0b094;
+    margin-bottom: 14px;
+  }
+  .outlook h3 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #f5f0e8;
+    margin: 0 0 16px;
+  }
+  .outlook p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #d9d0bb;
+    margin-bottom: 14px;
+  }
+  .outlook .levels {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-top: 10px;
+    gap: 14px;
+    margin: 18px 0;
   }
-  .levels .lvl {
-    text-align: center;
-    padding: 10px 8px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+  .outlook .lvl {
+    text-align: left;
+    padding: 12px 14px;
+    border: 1px solid #3a3a3a;
   }
-  .levels .lvl .label {
+  .outlook .lvl .l {
     font-size: 10px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #6b7280;
-    margin-bottom: 4px;
+    color: #c0b094;
+    margin-bottom: 6px;
   }
-  .levels .lvl .value {
+  .outlook .lvl .v {
+    font-family: Georgia, serif;
     font-size: 14px;
-    font-weight: 600;
+    color: #f5f0e8;
+    font-variant-numeric: tabular-nums;
   }
 
+  /* Footer */
   footer {
-    margin-top: 56px;
-    padding-top: 20px;
-    border-top: 1px solid #e5e7eb;
+    margin-top: 72px;
+    padding-top: 22px;
+    border-top: 2px solid var(--rule);
     font-size: 12px;
-    color: #9ca3af;
-    line-height: 1.6;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  footer .heading {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  footer .small {
+    margin-top: 18px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    font-style: italic;
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <div class="eyebrow">Morning Brief - IST</div>
-  <h1>Friday, May 15, 2026</h1>
-  <div class="subtitle">Covering Thursday May 14 close - outlook for Friday May 15</div>
+  <div class="masthead">
+    <span class="title">Morning Brief</span>
+    <span class="date">Sunday · May 10, 2026</span>
+  </div>
+
+  <h1>Friday closed lower on Mid-East risk. Mid- and small-caps still made new highs.</h1>
+
+  <p class="lede">Daily review of your eight-stock portfolio, Indian indices, and global context. Covering Friday May 8 close, weekend developments, outlook for Monday May 11.</p>
 
   <!-- PORTFOLIO -->
   <h2>Portfolio</h2>
-  <div class="hero">
+
+  <div class="portfolio-top">
     <div class="stat">
       <div class="label">Invested</div>
-      <div class="value num">&#8377;1,41,269</div>
+      <div class="value num">₹1,41,269</div>
     </div>
     <div class="stat">
       <div class="label">Current Value</div>
-      <div class="value num">&#8377;1,46,030</div>
+      <div class="value num">₹1,53,707</div>
     </div>
-    <div class="pnl-row">
-      <div>
-        <div class="label">Total P&amp;L</div>
-        <div class="value num pos">+&#8377;4,761 <span style="font-weight:500;">(+3.37%)</span></div>
-      </div>
-      <div style="text-align:right;">
-        <div class="label">Day's P&amp;L (Thu)</div>
-        <div class="value num pos">+&#8377;94 <span style="font-weight:500;">(+0.06%)</span></div>
-      </div>
+    <div class="stat">
+      <div class="label">Total P&amp;L</div>
+      <div class="value num pos">+₹12,438</div>
+      <div class="sub pos">+8.80%</div>
+    </div>
+    <div class="stat">
+      <div class="label">Day's P&amp;L · Fri</div>
+      <div class="value num pos">+₹1,300</div>
+      <div class="sub pos">+0.85%</div>
     </div>
   </div>
 
-  <h3 style="margin-top: 28px;">Holdings (8)</h3>
+  <h4 style="margin-top: 36px;">Holdings · 8</h4>
   <div class="table-scroll">
   <table class="holdings">
     <thead>
@@ -375,387 +466,361 @@
         <th>LTP</th>
         <th>Day %</th>
         <th>P&amp;L</th>
-        <th>Ret %</th>
+        <th>Return</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>ANANTRAJ<span class="ticker-sub">Real Estate</span></td>
+        <td>ANANTRAJ<span class="sub">Real Estate</span></td>
         <td class="num">31</td>
         <td class="num">523.54</td>
-        <td class="num">494.40</td>
-        <td class="num neg">&minus;0.72%</td>
-        <td class="num neg">&minus;903</td>
-        <td class="num neg">&minus;5.57%</td>
+        <td class="num">560.85</td>
+        <td class="num pos">+0.86%</td>
+        <td class="num pos">+1,156</td>
+        <td class="num pos">+7.13%</td>
       </tr>
       <tr>
-        <td>ARTEMISMED<span class="ticker-sub">Healthcare</span></td>
+        <td>ARTEMISMED<span class="sub">Healthcare</span></td>
         <td class="num">80</td>
         <td class="num">252.99</td>
-        <td class="num">273.86</td>
-        <td class="num flat">- (price stale)</td>
-        <td class="num pos">+1,670</td>
-        <td class="num pos">+8.25%</td>
+        <td class="num">265.67</td>
+        <td class="num pos">+0.32%</td>
+        <td class="num pos">+1,014</td>
+        <td class="num pos">+5.01%</td>
       </tr>
       <tr>
-        <td>BRIGADE<span class="ticker-sub">Real Estate</span></td>
+        <td>BRIGADE<span class="sub">Real Estate</span></td>
         <td class="num">10</td>
         <td class="num">766.70</td>
-        <td class="num">695.35</td>
-        <td class="num flat">- (re-mark)</td>
-        <td class="num neg">&minus;714</td>
-        <td class="num neg">&minus;9.31%</td>
+        <td class="num">758.25</td>
+        <td class="num neg">−1.93%</td>
+        <td class="num neg">−85</td>
+        <td class="num neg">−1.10%</td>
       </tr>
       <tr>
-        <td>DATAMATICS<span class="ticker-sub">IT Services</span></td>
+        <td>DATAMATICS<span class="sub">IT Services</span></td>
         <td class="num">25</td>
         <td class="num">819.89</td>
-        <td class="num">744.95</td>
-        <td class="num flat">- (re-mark)</td>
-        <td class="num neg">&minus;1,874</td>
-        <td class="num neg">&minus;9.14%</td>
+        <td class="num">818.40</td>
+        <td class="num neg">−0.57%</td>
+        <td class="num neg">−37</td>
+        <td class="num neg">−0.18%</td>
       </tr>
       <tr>
-        <td>DEEDEV<span class="ticker-sub">Engineering</span></td>
+        <td>DEEDEV<span class="sub">Engineering</span></td>
         <td class="num">20</td>
         <td class="num">313.45</td>
-        <td class="num">498.40</td>
-        <td class="num pos">+2.11%</td>
-        <td class="num pos">+3,699</td>
-        <td class="num pos">+59.00%</td>
+        <td class="num">469.25</td>
+        <td class="num pos">+2.52%</td>
+        <td class="num pos">+3,116</td>
+        <td class="num pos">+49.70%</td>
       </tr>
       <tr>
-        <td>E2E<span class="ticker-sub">Cloud / AI</span></td>
+        <td>E2E<span class="sub">Cloud / AI</span></td>
         <td class="num">10</td>
         <td class="num">2,790.00</td>
-        <td class="num">3,185.00</td>
-        <td class="num flat">~ flat</td>
-        <td class="num pos">+3,950</td>
-        <td class="num pos">+14.16%</td>
+        <td class="num">3,434.50</td>
+        <td class="num pos">+4.79%</td>
+        <td class="num pos">+6,445</td>
+        <td class="num pos">+23.10%</td>
       </tr>
       <tr>
-        <td>NAVINFLUOR<span class="ticker-sub">Specialty Chem</span></td>
+        <td>NAVINFLUOR<span class="sub">Specialty Chem</span></td>
         <td class="num">3</td>
         <td class="num">7,088.00</td>
-        <td class="num">6,910.50</td>
-        <td class="num flat">- (price stale)</td>
-        <td class="num neg">&minus;533</td>
-        <td class="num neg">&minus;2.50%</td>
+        <td class="num">7,041.50</td>
+        <td class="num neg">−0.61%</td>
+        <td class="num neg">−140</td>
+        <td class="num neg">−0.66%</td>
       </tr>
       <tr>
-        <td>WABAG<span class="ticker-sub">Water / Industrials</span></td>
+        <td>WABAG<span class="sub">Water</span></td>
         <td class="num">15</td>
         <td class="num">1,413.50</td>
-        <td class="num">1,377.90</td>
-        <td class="num flat">- (price stale)</td>
-        <td class="num neg">&minus;534</td>
-        <td class="num neg">&minus;2.52%</td>
+        <td class="num">1,478.00</td>
+        <td class="num neg">−1.43%</td>
+        <td class="num pos">+968</td>
+        <td class="num pos">+4.56%</td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="5">Total</td>
-        <td class="num pos">+4,761</td>
-        <td class="num pos">+3.37%</td>
+        <td colspan="5">Portfolio total</td>
+        <td class="num pos">+12,438</td>
+        <td class="num pos">+8.80%</td>
       </tr>
     </tfoot>
   </table>
   </div>
-  <p class="muted" style="font-size:12px; margin-top:8px;">Prices reflect Thursday May 14 close where confirmed - ANANTRAJ (&#8377;494.40), DATAMATICS (&#8377;744.95), DEEDEV (&#8377;498.40) and E2E (&#8377;3,185). BRIGADE was re-marked to its confirmed May 13 close of &#8377;695.35 from a stale &#8377;758.25, and DATAMATICS to a confirmed &#8377;744.95 from a stale &#8377;818.40 - these one-time catch-ups (about &minus;&#8377;2,465 combined) are excluded from Day's P&amp;L. ARTEMISMED, NAVINFLUOR and WABAG are held at prior close - May 14 ticks not in feed. May 14 was a strong recovery session (Nifty +1.18%); the +&#8377;94 Day's P&amp;L reflects only the confirmed movers - DEEDEV (+2.11%), ANANTRAJ (&minus;0.72%) and E2E (flat). All values in INR.</p>
+  <p class="muted" style="font-size: 12.5px; margin-top: 12px; font-style: italic;">Prices reflect Friday May 8 close. All values in INR.</p>
 
   <!-- HOLDINGS - WHAT CHANGED -->
-  <h2>Holdings &middot; What Changed</h2>
-  <p class="muted" style="font-size:13px; margin-bottom:14px;">Last 24-72h: results, orders, deals, analyst actions, corporate filings.</p>
+  <h2>Holdings · What Changed</h2>
+  <p class="muted" style="font-size: 14px;">Last 24-72 hours: results, orders, deals, analyst actions, corporate filings.</p>
 
-  <div class="holding-card">
-    <div class="head">
+  <div class="holding">
+    <div class="top">
       <div class="name">ANANTRAJ</div>
-      <div class="meta">&#8377;494.40 &middot; &minus;0.72%</div>
+      <div class="meta">₹560.85 · +0.86%</div>
     </div>
     <ul>
-      <li><span class="chip chip-info">Demerger</span>Board is <strong>exploring a demerger of the real-estate and data-centre businesses</strong> - flagged alongside the FY26 results. A structural re-rating trigger to watch.</li>
-      <li><span class="chip chip-pos">FY26</span>Audited FY26 results published May 13: PAT <strong>+30.39% to &#8377;554.85 cr</strong>; Sales +21.92% to &#8377;2,511.60 cr.</li>
-      <li><span class="chip chip-pos">Dividend</span>Final dividend <strong>&#8377;1/share (50%)</strong> recommended (subject to AGM).</li>
-      <li><span class="chip chip-info">Investor Meet</span>In-person analyst/institutional investor meeting in Mumbai on <strong>May 19</strong> - next near-term catalyst.</li>
-      <li><span class="chip chip-neg">Drift</span>Closed May 14 at &#8377;494.40 (&minus;0.72%), still soft post-print; 52W range &#8377;403 - &#8377;743.65. Now &minus;5.57% on the &#8377;523.54 cost.</li>
+      <li><span class="label">Board</span>Board meeting <strong>Mon May 11</strong> - likely covers Q4 / FY26 results.</li>
+      <li><span class="label">M&amp;A</span>Bought remaining 25% of Romano Projects for ₹3.58 cr (closed Apr 30) - now wholly owned.</li>
+      <li><span class="label">Project</span>Supplementary agreement with Destination Properties for Gurugram residential - revised to <strong>17.69% revenue share</strong> from area-based model.</li>
+      <li><span class="label pos">Analyst</span><strong>Nomura: Buy</strong> reiterated, but TP cut to ₹700 (reduced equity-fundraise visibility).</li>
     </ul>
   </div>
 
-  <div class="holding-card">
-    <div class="head">
+  <div class="holding">
+    <div class="top">
       <div class="name">ARTEMISMED</div>
-      <div class="meta">&#8377;273.86 &middot; - (price stale)</div>
+      <div class="meta">₹265.67 · +0.32%</div>
     </div>
     <ul>
-      <li><span class="chip">Note</span>May 14 tick not in feed - held at &#8377;273.86; last confirmed print was ~&#8377;273.57 (May 13). Nifty Pharma rose 2.74% Thursday, so directional risk is mildly to the upside.</li>
-      <li><span class="chip chip-pos">Q4 FY26</span>Reported May 8: PAT +30.4% YoY to &#8377;30.03 cr; Revenue +16.4% YoY to &#8377;279.23 cr. FY26 net profit +25.4% to &#8377;103.62 cr.</li>
-      <li><span class="chip chip-pos">Dividend</span>Final dividend <strong>&#8377;0.45/share (45%)</strong> recommended (subject to AGM).</li>
-      <li><span class="chip chip-info">Board</span>Tapan Mitra appointed Additional (Independent) Director for 3 years, effective May 8.</li>
-      <li><span class="chip chip-pos">Position</span>Still the steadiest gainer at +8.25% on cost. FY27 capex and bed-addition cadence remain the key triggers.</li>
-      <li><span class="quiet">No fresh material updates in the last 24h.</span></li>
+      <li><span class="label pos">Q4 FY26</span>Reported May 8: <strong>PAT +32.1% YoY</strong> to ₹30.3 cr; Revenue +16.4% to ₹279.2 cr.</li>
+      <li><span class="label pos">FY26</span>Net profit +26.2% to ₹103.7 cr; EBITDA +18% to ₹218 cr.</li>
+      <li><span class="label pos">Dividend</span>Final dividend <strong>₹0.45/share</strong> recommended (subject to AGM).</li>
+      <li><span class="label">Call</span>Q4 / FY26 earnings call <strong>Mon May 11, 11:00 AM IST</strong>.</li>
     </ul>
   </div>
 
-  <div class="holding-card">
-    <div class="head">
+  <div class="holding">
+    <div class="top">
       <div class="name">BRIGADE</div>
-      <div class="meta">&#8377;695.35 &middot; - (re-mark)</div>
+      <div class="meta">₹758.25 · −1.93%</div>
     </div>
     <ul>
-      <li><span class="chip chip-neg">Re-mark</span>Carried at a stale &#8377;758.25 in the prior brief; re-marked to the <strong>confirmed May 13 close of &#8377;695.35</strong> (stock fell ~3.28% that day from &#8377;718.90). May 14 tick not in feed. This one-time catch-up (about &minus;&#8377;629) is excluded from Day's P&amp;L.</li>
-      <li><span class="chip chip-neg">Q4 FY26</span>Net profit &minus;41.1% YoY at &#8377;145.5 cr (May 7 print); revenue broadly flat.</li>
-      <li><span class="chip chip-pos">Bonus</span><strong>1:3 bonus issue</strong> announced (pending shareholder approval) plus final dividend &#8377;2/share.</li>
-      <li><span class="chip chip-neg">Analyst</span>MarketsMojo moved the stock from "Strong Sell" to <strong>"Sell"</strong> (May 13) on improved valuation metrics - still a cautious stance.</li>
-      <li><span class="chip chip-neg">Position</span>Now &minus;9.31% on the &#8377;766.70 cost after the re-mark - the weakest line in the book.</li>
+      <li><span class="label neg">Q4 FY26</span>Net profit <strong>−41% YoY</strong> at ₹145.5 cr. Stock fell ~4% intraday on May 7.</li>
+      <li><span class="label pos">Operations</span>Pre-sales <strong>₹2,521 cr (+44% QoQ)</strong> - strongest quarter of FY26; FY26 revenue +11% to ₹5,909 cr; EBITDA margin 28%.</li>
+      <li><span class="label pos">Bonus</span><strong>1:3 bonus issue</strong> announced (pending shareholder approval) + final dividend ₹2/share.</li>
+      <li><span class="label">Guidance</span>FY27 launch pipeline 11.6 mn sqft, targeting 20% pre-sales growth.</li>
     </ul>
   </div>
 
-  <div class="holding-card">
-    <div class="head">
+  <div class="holding">
+    <div class="top">
       <div class="name">DATAMATICS</div>
-      <div class="meta">&#8377;744.95 &middot; - (re-mark)</div>
+      <div class="meta">₹818.40 · −0.57%</div>
     </div>
     <ul>
-      <li><span class="chip chip-neg">Re-mark</span>Confirmed May 14 close of <strong>&#8377;744.95</strong>; the prior brief carried a stale &#8377;818.40 ("tick not in feed"). The &minus;&#8377;1,836 catch-up is excluded from Day's P&amp;L. The stock did bounce on May 15's open, but that is the next session.</li>
-      <li><span class="chip chip-info">Board</span>Q4 FY26 board meeting <strong>confirmed for May 21, 2026</strong> - audited FY26 results plus a dividend decision. Trading window shut until 48h after.</li>
-      <li><span class="chip chip-info">Board</span>Hitesh Gajaria and Navnit Singh appointed additional independent directors (5-year terms, pending approval) - disclosed May 8.</li>
-      <li><span class="chip chip-neg">Sector</span>Nifty IT fell 1.99% Thursday - a fourth straight losing day for the IT pack - keeping pressure on the name.</li>
-      <li><span class="chip chip-neg">Position</span>Now &minus;9.14% on the &#8377;819.89 cost. Q3 FY26 was a record-revenue quarter (&#8377;510.1 cr, +19.9% YoY); FY26 print on May 21 is the key watch.</li>
+      <li><span class="label">Pending</span>Q4 FY26 results expected this month (date not yet confirmed via filings).</li>
+      <li><span class="label">Context</span>Q3 FY26 was mixed: record revenue ₹510 cr but net profit −42% QoQ to ₹36 cr - analysts watching FY27 margin trajectory + capex commentary.</li>
+      <li><em class="muted" style="font-size: 13px;">No bulk deals or rating changes flagged in last 24h.</em></li>
     </ul>
   </div>
 
-  <div class="holding-card">
-    <div class="head">
+  <div class="holding">
+    <div class="top">
       <div class="name">DEEDEV</div>
-      <div class="meta">&#8377;498.40 &middot; +2.11%</div>
+      <div class="meta">₹469.25 · +2.52%</div>
     </div>
     <ul>
-      <li><span class="chip chip-pos">Strong day</span>DEE Development Engineers closed May 14 at <strong>&#8377;498.40 (+2.11%)</strong>, pushing back toward the 52W high zone (&#8377;511).</li>
-      <li><span class="chip chip-pos">Order Book</span>April 2026 consolidated order book at <strong>&#8377;1,909.82 cr</strong>; an L1 order of ~&#8377;211 cr is pending formal award.</li>
-      <li><span class="chip chip-pos">Orders</span>DEE Piping Systems (Thailand) received an LOI for HRSG piping for an international customer worth ~EUR 1.9 mn (~&#8377;20 cr).</li>
-      <li><span class="chip chip-info">Guidance</span>Management targets ~&#8377;1,500 cr FY27 revenue, backed by a &#8377;4,000-5,000 cr order pipeline and the new seamless-pipe plant.</li>
-      <li><span class="chip chip-pos">Position</span>Still the standout - up ~106% YoY and <strong>+59.00% on cost</strong>.</li>
+      <li><span class="label pos">Order Book</span>Consolidated order book at <strong>₹1,909.82 cr</strong> as of Apr 30.</li>
+      <li><span class="label pos">Pipeline</span>L1 on additional <strong>~₹211 cr</strong> orders - formal POs expected shortly.</li>
+      <li><span class="label">April</span>Fresh inflows ₹49.94 cr; execution ₹67.48 cr in the month.</li>
+      <li><span class="label">Q3 base</span>Q3 FY26 revenue +81% YoY, PAT +237% YoY - sets a high comparable for Q4.</li>
     </ul>
   </div>
 
-  <div class="holding-card">
-    <div class="head">
+  <div class="holding">
+    <div class="top">
       <div class="name">E2E</div>
-      <div class="meta">&#8377;3,185.00 &middot; ~ flat</div>
+      <div class="meta">₹3,434.50 · +4.79%</div>
     </div>
     <ul>
-      <li><span class="chip chip-info">Corp Action</span>Board approved <strong>two wholly-owned subsidiary incorporations</strong> - one in India and one in Delaware, USA (disclosed May 13).</li>
-      <li><span class="chip">Note</span>Held flat at the confirmed May 14 print of ~&#8377;3,185 (intraday band &#8377;3,145 - &#8377;3,200).</li>
-      <li><span class="chip chip-pos">Q4 FY26</span>Reported Apr 28: revenue &#8377;95.64 cr (up sharply YoY); net profit &#8377;6.44 cr, back in the black.</li>
-      <li><span class="chip chip-pos">Orders</span>Two India AI Mission orders totalling &#8377;265 cr for LLM training infra; a US AI provider GPU contract worth $7.7 mn.</li>
-      <li><span class="chip chip-info">Corp Action</span>1:10 stock split approved; BSE in-principle approval for direct listing. Still +14.16% on cost.</li>
+      <li><span class="label pos">Q4 FY26</span>Operating revenue ₹96 cr (<strong>+186% YoY</strong>, +37% QoQ); but net profit −51% to ₹8.56 cr - heavy capex phase.</li>
+      <li><span class="label pos">AI Capacity</span>First Blackwell B200 cluster (1,024 GPUs) live <strong>by mid-May</strong>; targeting 6,000 GPUs by FY27 end.</li>
+      <li><span class="label pos">Orders</span>Two India AI Mission orders totalling <strong>₹265 cr</strong> for LLM training infrastructure.</li>
+      <li><span class="label">Listing</span>BSE in-principle approval for direct listing (filed May 8).</li>
+      <li><span class="label">Corp Action</span><strong>1:10 stock split</strong> approved.</li>
     </ul>
   </div>
 
-  <div class="holding-card">
-    <div class="head">
+  <div class="holding">
+    <div class="top">
       <div class="name">NAVINFLUOR</div>
-      <div class="meta">&#8377;6,910.50 &middot; - (price stale)</div>
+      <div class="meta">₹7,041.50 · −0.61%</div>
     </div>
     <ul>
-      <li><span class="chip">Note</span>May 14 tick not in feed - held at the confirmed May 13 close of &#8377;6,910.50. Sits just below the &#8377;7,088 cost (&minus;2.50%).</li>
-      <li><span class="chip chip-pos">Q4 FY26</span>Reported Apr 30: Revenue &#8377;938 cr (+33.8% YoY); EBITDA &#8377;321 cr (+80% YoY); PAT &#8377;213 cr.</li>
-      <li><span class="chip chip-pos">FY26</span>Consolidated PAT &#8377;663.56 cr (vs ~&#8377;289 cr prior year); revenue +41% to &#8377;3,314 cr.</li>
-      <li><span class="chip chip-pos">Dividend</span>Final dividend <strong>&#8377;8.60/share</strong> recommended (record date June 12).</li>
-      <li><span class="quiet">No fresh material updates in the last 24h.</span></li>
+      <li><span class="label pos">Q4 FY26</span>Reported May 7 - <strong>beat across the board</strong>: Revenue ₹938 cr (+34% YoY, vs est ₹807 cr); EBITDA ₹321 cr (+80% YoY); PAT ₹213 cr (vs est ₹156 cr).</li>
+      <li><span class="label pos">FY26</span>Revenue +41% to ₹3,314 cr; EBITDA <strong>more than doubled</strong> to ₹1,082 cr; margins expanded to 32.6%; PAT ₹664 cr vs ₹289 cr prior year.</li>
+      <li><span class="label pos">Analyst</span>Geojit TP <strong>₹8,500</strong>. 25-analyst average TP ~₹7,018. Mix of <strong>Overweight / Buy</strong> ratings.</li>
     </ul>
   </div>
 
-  <div class="holding-card">
-    <div class="head">
+  <div class="holding">
+    <div class="top">
       <div class="name">WABAG</div>
-      <div class="meta">&#8377;1,377.90 &middot; - (price stale)</div>
+      <div class="meta">₹1,478.00 · −1.43%</div>
     </div>
     <ul>
-      <li><span class="chip chip-pos">Order Win</span>New <strong>Letter of Award from Chennai's CMWSSB</strong> - a looped transmission network under the Chennai Climate Resilient Water Security &amp; Sewerage Project, valued at <strong>over &#8377;1,000 cr</strong>, with WABAG as lead JV partner (54-month build plus 10-year O&amp;M). A related 45 MLD TTRO PPP order was also flagged.</li>
-      <li><span class="chip">Note</span>May 14 tick not in feed - held at the confirmed May 13 close of &#8377;1,377.90 (&minus;2.52% on cost).</li>
-      <li><span class="chip chip-pos">Pipeline</span>Order book ~&#8377;16,300 cr (Q3); Kuwait JV is lowest bidder on a ~&#8377;3,400 cr project (LOA awaited); BPCL &#8377;600 cr water-treatment order in hand.</li>
-      <li><span class="chip chip-pos">New Segment</span>Ghaziabad Bioenergy Pvt Ltd JV formed (WABAG 51%) for a Compressed Bio-Gas plant.</li>
-      <li><span class="chip chip-info">Pending</span>Q4 FY26 board meeting on <strong>May 21</strong> - audited FY26 results plus final dividend.</li>
+      <li><span class="label">Pending</span>Q4 FY26 board meeting expected mid-May. Street expects revenue ₹950-1,020 cr, PAT ₹85-100 cr, margins 9.5-11%.</li>
+      <li><span class="label neg">Analyst</span>MarketsMojo <strong>downgraded to Sell</strong> (Apr 20) - mixed financial + technical signals.</li>
+      <li><span class="label">Watch</span>FY27 guidance is the bigger catalyst than headline Q4 numbers.</li>
     </ul>
   </div>
 
-  <!-- INDICES SNAPSHOT -->
-  <h2>Indices Snapshot &middot; Thursday Close</h2>
+  <!-- INDICES -->
+  <h2>Indices · Friday Close</h2>
 
   <div class="idx-grid">
     <div>
-      <div class="eyebrow" style="margin-bottom:8px;">Broad Market</div>
+      <h4>Broad Market</h4>
       <table class="idx-table">
         <thead><tr><th>Index</th><th>Close</th><th>Day %</th></tr></thead>
         <tbody>
-          <tr><td>Sensex</td><td class="num">75,398.72</td><td class="num pos">+1.06%</td></tr>
-          <tr><td>Nifty 50</td><td class="num">23,689.60</td><td class="num pos">+1.18%</td></tr>
-          <tr><td>Nifty 100</td><td class="num">-</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty 500</td><td class="num">-</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty Next 50</td><td class="num">-</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty Midcap 100</td><td class="num">-</td><td class="num pos">+1.12%</td></tr>
-          <tr><td>Nifty Midcap 150</td><td class="num">-</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty Smallcap 100</td><td class="num">-</td><td class="num neg">&minus;0.01%</td></tr>
-          <tr><td>Nifty Smallcap 250</td><td class="num">-</td><td class="num flat">-</td></tr>
+          <tr><td>Sensex</td><td class="num">77,328</td><td class="num neg">−0.66%</td></tr>
+          <tr><td>Nifty 50</td><td class="num">24,176</td><td class="num neg">−0.62%</td></tr>
+          <tr><td>Nifty 100</td><td class="num">-</td><td class="num neg">−0.59%</td></tr>
+          <tr><td>Nifty 500</td><td class="num">-</td><td class="num neg">−0.40%</td></tr>
+          <tr><td>Midcap 100</td><td class="num">61,911</td><td class="num neg">−0.15%</td></tr>
+          <tr><td>Smallcap 100</td><td class="num">-</td><td class="num pos">+0.22%</td></tr>
         </tbody>
       </table>
-      <p class="muted" style="font-size:12px; margin-top:6px;">Second straight recovery session - Sensex jumped 789.74 pts and Nifty added 277 pts to settle above 23,689, driven by reports of potential tax cuts for foreign bond investors and positive global cues from the Trump-Xi summit. Midcaps (+1.12%) joined the rally; smallcaps were broadly flat.</p>
+      <p class="muted" style="font-size: 12.5px; margin-top: 8px; font-style: italic;">Midcap hit fresh ATH; Smallcap notched 4th straight new high.</p>
     </div>
     <div>
-      <div class="eyebrow" style="margin-bottom:8px;">Sectoral</div>
+      <h4>Sectoral</h4>
       <table class="idx-table">
         <thead><tr><th>Index</th><th>Day %</th></tr></thead>
         <tbody>
-          <tr><td>Nifty IT</td><td class="num neg">&minus;1.99%</td></tr>
-          <tr><td>Nifty Bank</td><td class="num pos">+1.26%</td></tr>
-          <tr><td>Nifty Auto</td><td class="num pos">+0.62%</td></tr>
-          <tr><td>Nifty Pharma</td><td class="num pos">+2.74%</td></tr>
-          <tr><td>Nifty FMCG</td><td class="num pos">higher</td></tr>
-          <tr><td>Nifty Metal</td><td class="num pos">+2.04%</td></tr>
-          <tr><td>Nifty Energy</td><td class="num pos">higher</td></tr>
-          <tr><td>Nifty Realty</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty Financial Services</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty Fin Svc Ex-Bank</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty PSU Bank</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty Media</td><td class="num flat">-</td></tr>
-          <tr><td>Nifty Consumer Durables</td><td class="num flat">-</td></tr>
+          <tr><td>Nifty IT</td><td class="num pos">+1.20%</td></tr>
+          <tr><td>Nifty Energy</td><td class="num pos">+0.88%</td></tr>
+          <tr><td>Fin Svc Ex-Bank</td><td class="num pos">+0.79%</td></tr>
+          <tr><td>Nifty Realty</td><td class="num pos">+0.63%</td></tr>
+          <tr><td>Nifty Metal</td><td class="num pos">+0.27%</td></tr>
+          <tr><td>Nifty FMCG</td><td class="num pos">+0.16%</td></tr>
+          <tr><td>Nifty Pharma</td><td class="num pos">+0.14%</td></tr>
+          <tr><td>Nifty Auto</td><td class="num neg">−0.29%</td></tr>
+          <tr><td>Nifty Bank</td><td class="num neg">−1.32%</td></tr>
+          <tr><td>Financial Services</td><td class="num neg">−1.66%</td></tr>
+          <tr><td>PSU Bank</td><td class="num neg">−3.06%</td></tr>
         </tbody>
       </table>
-      <p class="muted" style="font-size:11px; margin-top:6px;">Broad-based green: every sector closed higher except IT (&minus;1.99%, a fourth straight down day). Pharma led at +2.74% on a fresh record (index 24,551.05); Metal +2.04% and Bank Nifty +1.26% (close 54,128.95). Precise closes for some sectoral indices were limited in feeds - direction shown where confirmed.</p>
     </div>
   </div>
 
-  <h3 style="margin-top: 28px;">Sector PE (where reported)</h3>
-  <div class="stat-grid">
-    <div class="stat"><div class="label">Pharma</div><div class="value num">~35.7&times;</div><div class="sub muted">premium &middot; record-high index</div></div>
-    <div class="stat"><div class="label">Bank Nifty</div><div class="value num">~13.8&times;</div><div class="sub muted">still cheap</div></div>
-    <div class="stat"><div class="label">Nifty 50</div><div class="value num">20.3&times;</div><div class="sub muted">May 12 &middot; pre-rally</div></div>
-    <div class="stat"><div class="label">Nifty 500</div><div class="value num">~26.0&times;</div><div class="sub muted">broad mean</div></div>
+  <h4>Sector PE · Where Reported</h4>
+  <div class="inline-stats">
+    <div class="stat"><div class="label">Pharma</div><div class="value num">38.8×</div><div class="sub">elevated</div></div>
+    <div class="stat"><div class="label">Infrastructure</div><div class="value num">24.4×</div><div class="sub">in line</div></div>
+    <div class="stat"><div class="label">Nifty 50</div><div class="value num">21.0×</div><div class="sub">benchmark</div></div>
+    <div class="stat"><div class="label">Nifty 500</div><div class="value num">27.0×</div><div class="sub">broad mean</div></div>
   </div>
-  <p class="muted" style="font-size:12px; margin-top:10px;">Nifty 50 TTM PE was 20.30x as of May 12 (pre the two-day recovery, so slightly higher now). Pharma continues to carry a premium near 35.7x over its ~33 seven-year median after the index scaled a fresh record. Bank Nifty remains among the cheapest in years despite the bounce.</p>
+  <p class="muted" style="font-size: 12.5px; font-style: italic;">Full Nifty sector PE table requires NSE data subscription - partial coverage via public sources today.</p>
 
   <!-- MACRO -->
-  <h2>Macro &middot; India</h2>
-  <div class="stat-grid">
+  <h2>Macro · India</h2>
+  <div class="inline-stats">
     <div class="stat">
       <div class="label">RBI Repo</div>
       <div class="value num">5.25%</div>
-      <div class="sub muted">Unchanged &middot; neutral</div>
+      <div class="sub">Unchanged · neutral</div>
     </div>
     <div class="stat">
-      <div class="label">FY27 GDP fcst</div>
+      <div class="label">FY27 GDP</div>
       <div class="value num">6.9%</div>
-      <div class="sub muted">RBI projection</div>
+      <div class="sub">RBI projection</div>
     </div>
     <div class="stat">
-      <div class="label">FY27 CPI fcst</div>
+      <div class="label">FY27 CPI</div>
       <div class="value num">4.6%</div>
-      <div class="sub muted">RBI &middot; band 2-6%</div>
+      <div class="sub">Below mid-term band</div>
     </div>
     <div class="stat">
-      <div class="label">USD/INR</div>
-      <div class="value num">~95.57</div>
-      <div class="sub pos">Eased 0.12%</div>
+      <div class="label">USD / INR</div>
+      <div class="value num">94.48</div>
+      <div class="sub neg">−23 paise · Fri</div>
     </div>
   </div>
-  <p style="margin-top:14px;">
-    <strong>Rupee.</strong> USD/INR firmed slightly to <span class="num">~95.57</span> on May 14, down 0.12% on the day - a modest recovery from record-low territory, helped by the proposed cut in taxes on foreign bond holdings and a steadier crude tape. RBI continues to manage volatility via spot intervention.
-  </p>
   <p>
-    <strong>FII / DII flows (May 14).</strong> A notable shift - <span class="num pos">FIIs turned net buyers of +&#8377;187.46 cr</span> in cash equities, alongside DII net buying of <span class="num pos">+&#8377;684.33 cr</span>. The foreign-bond-tax proposal appears to have nudged overseas flows back to the buy side after a sustained selling streak in May.
-  </p>
-  <p>
-    <strong>Inflation.</strong> April CPI (released May 12) printed at <span class="num">3.48%</span> vs 3.40% in March - still comfortably below the RBI's 4% target but edging up, with food inflation accelerating to ~4.20%.
-  </p>
-  <p>
-    <strong>Upcoming prints.</strong> <strong>WPI</strong> (April) is the key release this week - the first read-through of higher crude into wholesale prices. The foreign-bond-tax decision and any further FII flow follow-through are the bigger market swing factors.
+    <strong>FII / DII flows.</strong> Foreign investors have pulled <span class="num neg">₹1.92 lakh cr</span> YTD,
+    already exceeding 2025's full-year outflow. DIIs (SIP-driven) absorbed ~90% with <span class="num pos">₹1.7 lakh cr</span> of inflows.
+    FII ownership now ~16% - lowest in two decades, below DII share.
   </p>
 
   <!-- NEWS -->
   <h2>News &amp; Policy</h2>
   <ul class="news-list">
-    <li><span class="chip chip-pos">Policy</span><strong>India is considering reducing taxes on foreign bond investments</strong> to align with global norms and attract inflows - the single biggest driver of Thursday's rally and the swing back to FII net buying.</li>
-    <li><span class="chip chip-info">Trade</span><strong>India banned exports of raw, white and refined sugar</strong> with immediate effect, until September 30 or further orders, to manage domestic supply and prices.</li>
-    <li><span class="chip chip-pos">Agri</span>Cabinet approved a <strong>3% hike in the paddy MSP</strong> for the 2026-27 season, with farmers set to receive over &#8377;2.6 lakh cr through MSP-linked procurement.</li>
-    <li><span class="chip chip-info">Regulatory</span>SEBI proposed <strong>easing intraday borrowing rules for mutual funds</strong> - allowing its use for settlement, forex payments and mark-to-market needs, not just redemptions.</li>
-    <li><span class="chip chip-pos">Auto</span>India's leading automakers are planning <strong>capex of ~&#8377;40,000 cr</strong> to expand capacity, strengthen EV manufacturing and meet rising demand.</li>
-    <li><span class="chip chip-pos">Flows</span>FIIs turned <strong>net buyers (+&#8377;187 cr May 14)</strong> while DIIs added +&#8377;684 cr - the first clear sentiment shift in foreign flows this month.</li>
-    <li><span class="chip chip-info">Global</span>President Trump's <strong>Beijing summit with Xi</strong> and easing US-China trade tensions lifted global risk appetite and supported the domestic open.</li>
-    <li><span class="chip">Earnings</span>Q4 FY26 season rolling on - <strong>WABAG and DATAMATICS</strong> both have board meetings on May 21; <strong>ANANTRAJ</strong> hosts an investor meet on May 19.</li>
+    <li><span class="tag">Geopolitics</span>Renewed US-Iran military exchange near Strait of Hormuz drove Brent past $100. Risk-off tone weighed on Friday's session.</li>
+    <li><span class="tag">Banks</span>SBI shares −7% Friday on net interest margin compression; PSU Bank index down 3.06%.</li>
+    <li><span class="tag">Politics</span>BJP forms first West Bengal government; Suvendu Adhikari sworn in as CM. Centre-state policy alignment expected to unlock stalled schemes.</li>
+    <li><span class="tag">IPOs</span>Major approvals: <strong>Zepto $1B</strong> (quick-commerce), <strong>Dhoot Transmission ₹2,258 cr</strong> (auto components), <strong>Horizon Industrial Park ₹2,600 cr</strong> (logistics).</li>
+    <li><span class="tag">Trade</span>Commerce Secretary in Switzerland to advance India-EFTA TEPA pact negotiations.</li>
+    <li><span class="tag">Defence</span>Lt Gen NS Raja Subramani appointed Chief of Defence Staff; VAdm Krishna Swaminathan new Navy Chief.</li>
+    <li><span class="tag">Sectors</span>Construction equipment industry projected to grow 7% in FY27; India working on domestic aircraft leasing framework.</li>
   </ul>
 
   <!-- GLOBAL -->
-  <h2>Global Context &middot; Thursday Close</h2>
-  <div class="stat-grid">
+  <h2>Global Context · Friday Close</h2>
+  <div class="inline-stats">
     <div class="stat">
       <div class="label">S&amp;P 500</div>
-      <div class="value num">~7,504</div>
-      <div class="sub pos">+0.8% &middot; record &middot; above 7,500</div>
+      <div class="value num">7,398.93</div>
+      <div class="sub pos">+0.84% · record</div>
     </div>
     <div class="stat">
       <div class="label">Nasdaq</div>
-      <div class="value num">~26,635</div>
-      <div class="sub pos">+0.9% &middot; record &middot; tech-led</div>
+      <div class="value num">26,247</div>
+      <div class="sub pos">+1.71% · record</div>
     </div>
     <div class="stat">
       <div class="label">Dow</div>
-      <div class="value num">~50,063</div>
-      <div class="sub pos">+0.75% &middot; back above 50k</div>
+      <div class="value num">49,609</div>
+      <div class="sub pos">+0.02%</div>
     </div>
     <div class="stat">
-      <div class="label">Brent Crude</div>
-      <div class="value num">~$106.30</div>
-      <div class="sub pos">+0.61%</div>
+      <div class="label">Brent</div>
+      <div class="value num">$104.07</div>
+      <div class="sub neg">Mid-East risk</div>
     </div>
     <div class="stat">
-      <div class="label">Gold (spot)</div>
-      <div class="value num">~$4,701</div>
-      <div class="sub neg">&minus;0.11%</div>
+      <div class="label">Gold</div>
+      <div class="value num">$4,720</div>
+      <div class="sub muted">/oz · high</div>
     </div>
     <div class="stat">
-      <div class="label">22K Gold (IN)</div>
-      <div class="value num">~&#8377;14,850</div>
-      <div class="sub muted">/gm &middot; steady</div>
+      <div class="label">22K Gold IN</div>
+      <div class="value num">₹13,995</div>
+      <div class="sub muted">/gm</div>
     </div>
     <div class="stat">
       <div class="label">US 10Y</div>
-      <div class="value num">4.45%</div>
-      <div class="sub muted">eased ~0.02pp</div>
+      <div class="value num">~4.4%</div>
+      <div class="sub muted">approx.</div>
     </div>
     <div class="stat">
-      <div class="label">US Catalyst</div>
-      <div class="value num">Trump-Xi</div>
-      <div class="sub muted">Beijing summit &middot; risk-on</div>
+      <div class="label">Apr Payrolls</div>
+      <div class="value num">+115k</div>
+      <div class="sub pos">beat est.</div>
     </div>
   </div>
-  <p style="margin-top:14px;">
-    Wall Street pushed deeper into record territory Thursday - the S&amp;P 500 cleared 7,500 for the first time and the Nasdaq notched a fresh all-time high on a tech-led rally, while the Dow climbed back above 50,000. Sentiment was carried by optimism around President Trump's Beijing visit and US-China trade talks. Brent edged up toward $106 on the US-Iran ceasefire backdrop; gold was little changed near $4,700 as the US 10Y yield eased slightly to 4.45%, still hovering near its highest level since mid-2025.
+  <p>
+    US indices closed at record highs Friday on a stronger-than-expected April jobs print, even as oil and gold rallied on Mid-East tensions - a divergence worth tracking. EM Asia (Japan, Korea, Taiwan) continues to attract flows that India is currently not getting.
   </p>
 
   <!-- OUTLOOK -->
-  <h2>Friday Outlook &middot; May 15</h2>
-  <p>
-    <strong>GIFT Nifty:</strong> Trading near <span class="num">23,668</span> early Friday IST, up ~32 pts (+0.14%) - pointing to a <strong>muted, flat-to-positive open</strong> after Thursday's 277-pt surge. Wall Street records and the return of FII buying are supportive, but with Nifty already up sharply, traders may pause to consolidate the gains.
-  </p>
-  <h3>Nifty 50 Levels</h3>
-  <div class="levels">
-    <div class="lvl"><div class="label">Major Support</div><div class="value num">23,400-23,300</div></div>
-    <div class="lvl"><div class="label">Key Pivot</div><div class="value num">23,600</div></div>
-    <div class="lvl"><div class="label">Major Resistance</div><div class="value num">23,800-24,000</div></div>
-  </div>
-  <p style="margin-top:14px;">
-    Thursday's rally took Nifty back above the <span class="num">23,500-23,600</span> band that had been resistance - that zone now flips to the first line of support, with <span class="num">23,400-23,300</span> the next cushion. On the upside, <span class="num">23,800</span> is the immediate hurdle; a decisive close above it opens the <span class="num">24,000-24,200</span> zone. Momentum has turned up, but a sustained move above 24,000 is still needed to confirm a durable trend reversal - until then the structure stays recovery-mode rather than fully stabilised.
-  </p>
-  <p>
-    <strong>Watch this week:</strong> <strong>WABAG Q4</strong> and <strong>DATAMATICS Q4</strong> board meetings on May 21, the <strong>ANANTRAJ investor meet</strong> on May 19, the foreign-bond-tax decision, FII flow follow-through after Thursday's net buying, the Trump-Xi summit outcome, USD/INR action near 95.5, <strong>WPI</strong> (April) data, and Brent's reaction to West Asia headlines.
-  </p>
+  <h2>Monday Outlook</h2>
 
-  <footer>
-    <div>Morning Brief &middot; auto-generated each morning at ~8:30 AM IST.</div>
-    <div style="margin-top:6px;">
-      Data sources: NSE / BSE / Business Standard / Business Today / Business Upturn / TheStreet / CNBC / Sunday Guardian / Bloomberg / Yahoo Finance / Groww / TickerTape / Screener / Trendlyne / RBI / Trading Economics / News24 / Zee Business / India IPO / scanX. Several portfolio prices and sectoral closes were limited in feeds - stale prices and re-marks are flagged.
+  <div class="outlook">
+    <div class="label">May 11 · Pre-Open</div>
+    <h3>GIFT Nifty +0.17% at 24,280 - mildly positive bias.</h3>
+    <p>The index is wedged in a <span class="num">24,127-24,255</span> no-trade zone. Wait for a confirmed 15-minute breakout or breakdown before adding direction. The 200-day EMA sits in the 24,600-24,800 band, doubling as immediate resistance.</p>
+
+    <div class="levels">
+      <div class="lvl"><div class="l">Major Support</div><div class="v">23,500 - 23,800</div></div>
+      <div class="lvl"><div class="l">Consolidation</div><div class="v">24,000 - 24,400</div></div>
+      <div class="lvl"><div class="l">Major Resistance</div><div class="v">24,800 - 25,000</div></div>
     </div>
+
+    <p><strong style="color: #f5f0e8;">Watch this week.</strong> ARTEMISMED earnings call (Mon 11:00 AM), ANANTRAJ board meeting (Mon), DATAMATICS &amp; WABAG Q4 announcements, continued FII flow data, Brent reaction to any Iran de-escalation, USD / INR through 94.50.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="heading">Method</div>
+    <div>Daily brief, auto-generated each weekday morning at ~8:30 AM IST. Data composed from NSE, Business Standard, Business Today, TradingView, CNBC, Yahoo Finance, Bajaj Finserv, TickerTape, Screener, Trendlyne, Scanx, RBI, Investing.com, MarketsMojo, Whalesbook, Univest.</div>
+    <div class="small">Not investment advice. Always read scheme documents and consider your own circumstances.</div>
   </footer>
 
 </div>
