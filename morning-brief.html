@@ -1,12 +1,4 @@
-<!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
-{
-  "name": "Morning Brief",
-  "schemaVersion": 1,
-  "description": "Daily morning brief: Indian portfolio (8 holdings), Nifty/Bank Nifty levels, sector snapshot, India macro (RBI, FII/DII, USD-INR), news & policy headlines, global context (US indices, Brent, gold), and next-session outlook. Refreshed daily ~8:30 AM IST by a scheduled task.",
-  "mcpTools": [],
-  "mcpServerNames": []
-}
-</script>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -268,6 +260,17 @@
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
+  .holding .newtag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 2px 7px;
+    margin-left: 8px;
+    vertical-align: 2px;
+  }
   .holding ul {
     list-style: none;
     padding: 0;
@@ -292,7 +295,7 @@
   .holding li .label.neg { color: var(--neg); }
   .holding li .label.pos { color: var(--pos); }
 
-  /* Inline stat row (macro, global) */
+  /* Inline stat row */
   .inline-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -432,12 +435,12 @@
 
   <div class="masthead">
     <span class="title">Morning Brief</span>
-    <span class="date">Thursday · May 21, 2026</span>
+    <span class="date">Saturday · May 16, 2026</span>
   </div>
 
-  <h1>Wednesday's late rebound dragged the benchmarks back to green, but a record-low rupee left the book standing still.</h1>
+  <h1>The book is reshaped: four new names in, four out. E2E carries it; the jeweller drags.</h1>
 
-  <p class="lede">Daily review of your eight-stock portfolio, Indian indices, and global context. Covering the Wednesday May 20 close and the outlook for Thursday May 21.</p>
+  <p class="lede">Review of your eight-stock portfolio - now rebuilt with Angel One, Balaji Amines, PN Gadgil and Quality Power replacing Brigade, Datamatics, Dee Development and Navin Fluorine. Covering Friday May 15 close and the week's developments, with an outlook for Monday May 18.</p>
 
   <!-- PORTFOLIO -->
   <h2>Portfolio</h2>
@@ -445,21 +448,21 @@
   <div class="portfolio-top">
     <div class="stat">
       <div class="label">Invested</div>
-      <div class="value num">₹1,41,269</div>
+      <div class="value num">₹1,40,819</div>
     </div>
     <div class="stat">
       <div class="label">Current Value</div>
-      <div class="value num">₹1,46,375</div>
+      <div class="value num">₹1,46,356</div>
     </div>
     <div class="stat">
       <div class="label">Total P&amp;L</div>
-      <div class="value num pos">+₹5,106</div>
-      <div class="sub pos">+3.61%</div>
+      <div class="value num pos">+₹5,537</div>
+      <div class="sub pos">+3.93%</div>
     </div>
     <div class="stat">
-      <div class="label">Day's P&amp;L · Wed</div>
-      <div class="value num neg">−₹22</div>
-      <div class="sub neg">−0.02%</div>
+      <div class="label">Book</div>
+      <div class="value num">8</div>
+      <div class="sub">positions</div>
     </div>
   </div>
 
@@ -472,7 +475,7 @@
         <th>Qty</th>
         <th>Avg</th>
         <th>LTP</th>
-        <th>Day %</th>
+        <th>Invested</th>
         <th>P&amp;L</th>
         <th>Return</th>
       </tr>
@@ -482,244 +485,220 @@
         <td>ANANTRAJ<span class="sub">Real Estate</span></td>
         <td class="num">31</td>
         <td class="num">523.54</td>
-        <td class="num">484.00</td>
-        <td class="num neg">−0.80%</td>
-        <td class="num neg">−1,226</td>
-        <td class="num neg">−7.55%</td>
+        <td class="num">488.95</td>
+        <td class="num">16,230</td>
+        <td class="num neg">−1,072</td>
+        <td class="num neg">−6.61%</td>
+      </tr>
+      <tr>
+        <td>ANGELONE<span class="sub">Capital Markets</span></td>
+        <td class="num">33</td>
+        <td class="num">305.05</td>
+        <td class="num">325.00</td>
+        <td class="num">10,067</td>
+        <td class="num pos">+658</td>
+        <td class="num pos">+6.54%</td>
       </tr>
       <tr>
         <td>ARTEMISMED<span class="sub">Healthcare</span></td>
         <td class="num">80</td>
         <td class="num">252.99</td>
-        <td class="num">282.00</td>
-        <td class="num pos">+0.20%</td>
-        <td class="num pos">+2,321</td>
-        <td class="num pos">+11.47%</td>
+        <td class="num">279.53</td>
+        <td class="num">20,239</td>
+        <td class="num pos">+2,123</td>
+        <td class="num pos">+10.49%</td>
       </tr>
       <tr>
-        <td>BRIGADE<span class="sub">Real Estate</span></td>
-        <td class="num">10</td>
-        <td class="num">766.70</td>
-        <td class="num">671.00</td>
-        <td class="num neg">−1.40%</td>
-        <td class="num neg">−957</td>
-        <td class="num neg">−12.48%</td>
-      </tr>
-      <tr>
-        <td>DATAMATICS<span class="sub">IT Services</span></td>
-        <td class="num">25</td>
-        <td class="num">819.89</td>
-        <td class="num">740.00</td>
-        <td class="num pos">+0.35%</td>
-        <td class="num neg">−1,997</td>
-        <td class="num neg">−9.74%</td>
-      </tr>
-      <tr>
-        <td>DEEDEV<span class="sub">Engineering</span></td>
-        <td class="num">20</td>
-        <td class="num">313.45</td>
-        <td class="num">490.00</td>
-        <td class="num pos">+0.25%</td>
-        <td class="num pos">+3,531</td>
-        <td class="num pos">+56.32%</td>
+        <td>BALAMINES<span class="sub">Specialty Chem</span></td>
+        <td class="num">11</td>
+        <td class="num">1,727.92</td>
+        <td class="num">1,833.30</td>
+        <td class="num">19,007</td>
+        <td class="num pos">+1,159</td>
+        <td class="num pos">+6.10%</td>
       </tr>
       <tr>
         <td>E2E<span class="sub">Cloud / AI</span></td>
         <td class="num">10</td>
         <td class="num">2,790.00</td>
-        <td class="num">3,175.60</td>
-        <td class="num pos">+0.10%</td>
-        <td class="num pos">+3,856</td>
-        <td class="num pos">+13.82%</td>
+        <td class="num">3,331.40</td>
+        <td class="num">27,900</td>
+        <td class="num pos">+5,414</td>
+        <td class="num pos">+19.41%</td>
       </tr>
       <tr>
-        <td>NAVINFLUOR<span class="sub">Specialty Chem</span></td>
-        <td class="num">3</td>
-        <td class="num">7,088.00</td>
-        <td class="num">7,046.50</td>
-        <td class="num neg">−0.41%</td>
-        <td class="num neg">−125</td>
-        <td class="num neg">−0.59%</td>
+        <td>PNGJL<span class="sub">Jewellery Retail</span></td>
+        <td class="num">25</td>
+        <td class="num">632.29</td>
+        <td class="num">521.65</td>
+        <td class="num">15,807</td>
+        <td class="num neg">−2,766</td>
+        <td class="num neg">−17.50%</td>
+      </tr>
+      <tr>
+        <td>QPOWER<span class="sub">Electrical Equip</span></td>
+        <td class="num">10</td>
+        <td class="num">1,036.57</td>
+        <td class="num">1,068.40</td>
+        <td class="num">10,366</td>
+        <td class="num pos">+318</td>
+        <td class="num pos">+3.07%</td>
       </tr>
       <tr>
         <td>WABAG<span class="sub">Water</span></td>
         <td class="num">15</td>
         <td class="num">1,413.50</td>
         <td class="num">1,393.70</td>
-        <td class="num pos">+0.55%</td>
+        <td class="num">21,203</td>
         <td class="num neg">−297</td>
         <td class="num neg">−1.40%</td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="5">Portfolio total</td>
-        <td class="num pos">+5,106</td>
-        <td class="num pos">+3.61%</td>
+        <td colspan="4">Portfolio total</td>
+        <td class="num">1,40,819</td>
+        <td class="num pos">+5,537</td>
+        <td class="num pos">+3.93%</td>
       </tr>
     </tfoot>
   </table>
   </div>
-  <p class="muted" style="font-size: 12.5px; margin-top: 12px; font-style: italic;">Prices reflect the Wednesday May 20 close. NAVINFLUOR is at a confirmed close; other LTPs and day-% values are estimated from the most recent published quote and sector moves where Wednesday tick data is unconfirmed. All values in INR.</p>
+  <p class="muted" style="font-size: 12.5px; margin-top: 12px; font-style: italic;">Prices reflect Friday May 15 close. Weekend snapshot - day-change figures resume Monday. All values in INR.</p>
 
   <!-- HOLDINGS - WHAT CHANGED -->
   <h2>Holdings · What Changed</h2>
-  <p class="muted" style="font-size: 14px;">Results, orders, deals, analyst actions and corporate filings since the last brief.</p>
+  <p class="muted" style="font-size: 14px;">Recent results, corporate actions, analyst moves. Four positions are new to the book this week.</p>
 
   <div class="holding">
     <div class="top">
       <div class="name">ANANTRAJ</div>
-      <div class="meta">₹484.00 · −0.80%</div>
+      <div class="meta">₹488.95 · −6.61%</div>
     </div>
     <ul>
-      <li><span class="label pos">FY26</span>Audited results published May 13: <strong>Q4 PAT +25%</strong> to ₹149 cr; FY26 revenue crossed <strong>₹2,512 cr</strong>, up from ₹2,060 cr.</li>
-      <li><span class="label">M&amp;A</span>The MD-led committee evaluating a <strong>demerger of the data-centre business</strong> from real estate is still in progress - distinct risk and capital profiles cited.</li>
-      <li><span class="label pos">Order Book</span>Data-centre roadmap targets <strong>357 MW IT load</strong> at ~₹20,000 cr investment; fresh MoU with Andhra Pradesh for an additional 50 MW.</li>
-      <li><span class="label neg">Tape</span>The stock drifted with a softer realty bid Wednesday and trades near ₹484, around 35% below its ₹743.65 fifty-two-week high.</li>
+      <li><span class="label pos">Q4 FY26</span>Net profit <strong>₹146.6 cr (+23.6% YoY)</strong>; revenue ₹646.8 cr (+19.6%). FY26 net profit ₹557 cr on revenue ₹2,512 cr.</li>
+      <li><span class="label">Strategic</span>Board has constituted a committee to evaluate a <strong>demerger of the real estate and data centre businesses</strong> - a potential value-unlock event worth tracking.</li>
+      <li><span class="label">Data Centre</span>MOU with Andhra Pradesh govt for 50 MW additional capacity; total planned DC capacity now 357 MW IT load.</li>
+      <li><span class="label">Dividend</span>Final dividend Re 1/share. Anish Sarin appointed Whole-time Director.</li>
+      <li><span class="label neg">Stock</span>Down ~13% from last month's ₹560 level - the market punished margin softness despite the profit growth.</li>
+    </ul>
+  </div>
+
+  <div class="holding">
+    <div class="top">
+      <div class="name">ANGELONE<span class="newtag">New</span></div>
+      <div class="meta">₹325.00 · +6.54%</div>
+    </div>
+    <ul>
+      <li><span class="label pos">Q4 FY26</span>Sharp recovery quarter: PAT <strong>+83.5% to ₹320 cr</strong>; total income +38.7% to ₹1,467 cr; EBITDA margin 41%.</li>
+      <li><span class="label neg">FY26</span>Full year was weaker: PAT −21.9% to ₹915 cr, total income −1.8%. Q4 strength is a rebound, not a trend yet.</li>
+      <li><span class="label">Scale</span>Client base 37.79 mn (April 2026); F&amp;O brokerage alone is 47% of gross income.</li>
+      <li><span class="label neg">Watch</span>RBI's new cap on loans for share purchases (see Macro) could pressure broking volumes. Whalesbook also flagged rising debt.</li>
     </ul>
   </div>
 
   <div class="holding">
     <div class="top">
       <div class="name">ARTEMISMED</div>
-      <div class="meta">₹282.00 · +0.20%</div>
+      <div class="meta">₹279.53 · +10.49%</div>
     </div>
     <ul>
-      <li><span class="label pos">Q4 FY26</span>Reported May 8: <strong>PAT +30.4% YoY</strong> to ₹30.0 cr; FY26 net profit +26.2% to ₹103.7 cr on revenue of ₹279.2 cr in the quarter.</li>
-      <li><span class="label pos">Dividend</span>Final dividend <strong>₹0.45/share (45%)</strong> recommended; record date awaited.</li>
-      <li><span class="label pos">Tape</span>Healthcare held a defensive bid; the stock sits near ₹282, just shy of its ₹297.50 fifty-two-week high - the book's top return at <strong>+11.47%</strong>.</li>
-      <li><em class="muted" style="font-size: 13px;">No fresh corporate filings or analyst actions in the last 24 hours.</em></li>
+      <li><span class="label pos">Q4 FY26</span>Reported May 8: PAT +32.1% YoY to ₹30.3 cr; revenue +16.4%. Earnings call held May 11.</li>
+      <li><span class="label pos">Position</span>Up 10.5% for you - the second-best performer in the book. No fresh red flags this week.</li>
     </ul>
   </div>
 
   <div class="holding">
     <div class="top">
-      <div class="name">BRIGADE</div>
-      <div class="meta">₹671.00 · −1.40%</div>
+      <div class="name">BALAMINES<span class="newtag">New</span></div>
+      <div class="meta">₹1,833.30 · +6.10%</div>
     </div>
     <ul>
-      <li><span class="label neg">Q4 FY26</span>PAT <strong>−41% YoY</strong> at ₹145.5 cr; revenue broadly flat at ₹1,458 cr - reported earlier this month.</li>
-      <li><span class="label pos">Operations</span>Pre-sales <strong>₹2,521 cr (+44% QoQ)</strong>; FY26 EBITDA margin held near 28%.</li>
-      <li><span class="label pos">Bonus</span><strong>1:3 bonus issue</strong> plus ₹2/share dividend still pending shareholder approval.</li>
-      <li><span class="label neg">Watch</span>The stock has slid to ₹671, near its ₹601 fifty-two-week low and the weakest return in the book at <strong>−12.48%</strong>; the post-results de-rating has yet to find a floor.</li>
-    </ul>
-  </div>
-
-  <div class="holding">
-    <div class="top">
-      <div class="name">DATAMATICS</div>
-      <div class="meta">₹740.00 · +0.35%</div>
-    </div>
-    <ul>
-      <li><span class="label">Pending</span>Board meets <strong>today, Thursday May 21</strong>, for audited FY26 results and a dividend recommendation; the trading window stays shut until 48 hours after the print.</li>
-      <li><span class="label pos">Q4 Preview</span>Street expects <strong>revenue +18% YoY</strong>, PAT +17%, EBITDA +16% - a solid bar going into the result.</li>
-      <li><span class="label neg">Tape</span>Stock has eased to ₹740 from ₹810 a session ago; the result is the near-term catalyst.</li>
-      <li><em class="muted" style="font-size: 13px;">No analyst-action flags ahead of today's board meeting.</em></li>
-    </ul>
-  </div>
-
-  <div class="holding">
-    <div class="top">
-      <div class="name">DEEDEV</div>
-      <div class="meta">₹490.00 · +0.25%</div>
-    </div>
-    <ul>
-      <li><span class="label">Pending</span>Q4 and FY26 <strong>earnings call set for Friday May 22</strong> - audited numbers and FY27 guidance in focus.</li>
-      <li><span class="label pos">Order Book</span>Consolidated book around <strong>₹1,910-1,940 cr</strong>; FY26 inflows of ₹1,870 cr.</li>
-      <li><span class="label pos">Analyst</span>Management targets <strong>₹1,500 cr revenue in FY27</strong> against a ₹4,000-5,000 cr order pipeline plus a new seamless-pipe plant.</li>
-      <li><span class="label pos">Tape</span>The standout return in the book at <strong>+56.32%</strong>; the stock holds near ₹490 into Friday's call.</li>
+      <li><span class="label pos">Q4 FY26</span>Strong beat (board met May 13): PAT <strong>₹63.2 cr (+57.8% YoY, +101% QoQ)</strong>; revenue ₹403 cr; EBITDA margin 25%.</li>
+      <li><span class="label pos">Reaction</span>Stock hit the <strong>20% upper circuit on May 14</strong> on the results.</li>
+      <li><span class="label">FY26</span>Net profit ₹169 cr; revenue ₹1,425 cr (+2% YoY - the year was flat, Q4 did the lifting). Final dividend ₹11/share.</li>
     </ul>
   </div>
 
   <div class="holding">
     <div class="top">
       <div class="name">E2E</div>
-      <div class="meta">₹3,175.60 · +0.10%</div>
+      <div class="meta">₹3,331.40 · +19.41%</div>
     </div>
     <ul>
-      <li><span class="label pos">FY26</span>Revenue from operations <strong>+49.8%</strong> to ₹245.6 cr; net loss narrowed to ₹15.6 cr from ₹47.5 cr; March run-rate ₹37.4 cr.</li>
-      <li><span class="label">Board</span>Board earlier approved two wholly-owned subsidiaries (India and Delaware) with seed investments of ₹1 lakh and USD 40,000.</li>
-      <li><span class="label">Pending</span>An annual-results XBRL discrepancy was clarified and a revised filing lodged; no fresh disclosures since.</li>
-      <li><span class="label">Tape</span>Steady near ₹3,176, trading well off the ₹3,894.70 fifty-two-week high; up ~27% over the past year.</li>
+      <li><span class="label pos">Position</span>Top performer in the book at +19.4%. Q4 FY26 already reported (revenue +186% YoY; capex-led net profit dip).</li>
+      <li><span class="label">AI Capacity</span>First Blackwell B200 cluster (1,024 GPUs) was slated to go live mid-May - that window is now; watch for a utilisation update.</li>
+      <li><span class="label">Corp Action</span>1:10 stock split and BSE direct-listing approval remain in train.</li>
     </ul>
   </div>
 
   <div class="holding">
     <div class="top">
-      <div class="name">NAVINFLUOR</div>
-      <div class="meta">₹7,046.50 · −0.41%</div>
+      <div class="name">PNGJL<span class="newtag">New</span></div>
+      <div class="meta">₹521.65 · −17.50%</div>
     </div>
     <ul>
-      <li><span class="label pos">Q4 FY26</span>Record print earlier this month: Revenue ₹938 cr (+34% YoY); EBITDA ₹321 cr (+80%); PAT ₹213 cr.</li>
-      <li><span class="label pos">FY26</span>Revenue +41% to ₹3,314 cr; EBITDA more than doubled to ₹1,082 cr; FY26 PAT ₹664 cr.</li>
-      <li><span class="label pos">Analyst</span>Consensus rating <strong>Buy</strong>; Geojit target ₹8,500, broad consensus near ₹7,161.</li>
-      <li><span class="label neg">Watch</span>Closed ₹7,046.50, just below its ₹7,200 fifty-two-week high - a <strong>rich valuation</strong> that now needs earnings to keep pace.</li>
+      <li><span class="label neg">Q4 FY26</span>Headline looked strong - net profit +45.6%, sales +123% to ₹3,544 cr - but <strong>margins compressed sharply</strong>: EBITDA margin fell to 4.7% from 6.9%; gross margin down 231 bps to 9.7%.</li>
+      <li><span class="label neg">Why</span>Revenue mix shifted to low-margin gold bars and coins (40% of sales vs 28%), fewer studded-jewellery sales, and heavy festive discounting.</li>
+      <li><span class="label neg">Stock</span>Fell ~15% post-results, hit a lower circuit. Worst position in the book at −17.5%.</li>
+      <li><span class="label">FY27 guide</span>Management guided 12-13% gross margin and 7-7.5% EBITDA - watch whether they deliver the recovery.</li>
+    </ul>
+  </div>
+
+  <div class="holding">
+    <div class="top">
+      <div class="name">QPOWER<span class="newtag">New</span></div>
+      <div class="meta">₹1,068.40 · +3.07%</div>
+    </div>
+    <ul>
+      <li><span class="label pos">Q4 FY26</span>Net profit <strong>₹33.9 cr (+74.8% YoY)</strong>. Earnings call held May 14.</li>
+      <li><span class="label">IPO Funds</span>Monitoring report shows no deviation in IPO-proceeds use; capex and acquisition deployment delayed, expected to complete within two quarters.</li>
+      <li><span class="label">Note</span>Recently listed (2025), BE-series. Smaller, less-liquid name - position-size with that in mind.</li>
     </ul>
   </div>
 
   <div class="holding">
     <div class="top">
       <div class="name">WABAG</div>
-      <div class="meta">₹1,393.70 · +0.55%</div>
+      <div class="meta">₹1,393.70 · −1.40%</div>
     </div>
     <ul>
-      <li><span class="label">Pending</span>Board meets <strong>today, Thursday May 21</strong>, for audited FY26 results and the final dividend.</li>
-      <li><span class="label pos">Q4 Preview</span>Street estimates: revenue <strong>₹950-1,020 cr</strong>, PAT ₹85-100 cr, margin 9.5-11%.</li>
-      <li><span class="label pos">Order Book</span>Order book above <strong>₹16,300 cr</strong>, with roughly half international; a new Bio-CNG plant in Ghaziabad with PEAK adds to the pipeline.</li>
-      <li><span class="label neg">Watch</span>Stock holds ₹1,394, ~17% off its ₹1,680 fifty-two-week high; FY27 guidance is the real catalyst on today's print.</li>
+      <li><span class="label">Pending</span>Q4 FY26 board meeting confirmed for <strong>May 21</strong> (results + final dividend). Street expects revenue ₹950-1,020 cr, PAT ₹85-100 cr.</li>
+      <li><span class="label neg">Analyst</span>MarketsMojo's Sell downgrade (Apr 20) still stands. FY27 guidance is the bigger catalyst than the headline Q4 print.</li>
     </ul>
   </div>
 
   <!-- INDICES -->
-  <h2>Indices · Wednesday Close</h2>
+  <h2>Indices · Friday May 15 Close</h2>
 
   <div class="idx-grid">
     <div>
-      <h4>Broad Market</h4>
+      <h4>Benchmarks</h4>
       <table class="idx-table">
-        <thead><tr><th>Index</th><th>Close</th><th>Day %</th></tr></thead>
+        <thead><tr><th>Index</th><th>Close</th></tr></thead>
         <tbody>
-          <tr><td>Sensex</td><td class="num">75,318</td><td class="num pos">+0.16%</td></tr>
-          <tr><td>Nifty 50</td><td class="num">23,659</td><td class="num pos">+0.17%</td></tr>
-          <tr><td>Nifty 100</td><td class="num">-</td><td class="num pos">+0.20%</td></tr>
-          <tr><td>Nifty 500</td><td class="num">-</td><td class="num pos">+0.25%</td></tr>
-          <tr><td>Midcap 100</td><td class="num">-</td><td class="num pos">+0.49%</td></tr>
-          <tr><td>Smallcap 100</td><td class="num">-</td><td class="num pos">+0.04%</td></tr>
+          <tr><td>Nifty 50</td><td class="num">23,659.00</td></tr>
+          <tr><td>Nifty Bank</td><td class="num">53,562.20</td></tr>
+          <tr><td>Sensex</td><td class="num">~75,318</td></tr>
         </tbody>
       </table>
-      <p class="muted" style="font-size: 12.5px; margin-top: 8px; font-style: italic;">The benchmarks recouped intraday losses in the final hour; midcaps outperformed while the smallcap basket barely held the line.</p>
+      <p class="muted" style="font-size: 12.5px; margin-top: 8px; font-style: italic;">Nifty recovered from a five-session low of 23,380 hit May 12.</p>
     </div>
     <div>
-      <h4>Sectoral</h4>
+      <h4>Sector Tone</h4>
       <table class="idx-table">
-        <thead><tr><th>Index</th><th>Day %</th></tr></thead>
+        <thead><tr><th>Sector</th><th>Week</th></tr></thead>
         <tbody>
-          <tr><td>Nifty IT</td><td class="num pos">+0.30%</td></tr>
-          <tr><td>Nifty Bank</td><td class="num pos">+0.15%</td></tr>
-          <tr><td>Nifty Auto</td><td class="num pos">+0.80%</td></tr>
-          <tr><td>Nifty Pharma</td><td class="num pos">+0.20%</td></tr>
-          <tr><td>Nifty FMCG</td><td class="num neg">−0.45%</td></tr>
-          <tr><td>Nifty Metal</td><td class="num pos">+0.60%</td></tr>
-          <tr><td>Nifty Energy</td><td class="num pos">+1.10%</td></tr>
-          <tr><td>Nifty Realty</td><td class="num neg">−0.30%</td></tr>
-          <tr><td>Financial Services</td><td class="num pos">+0.20%</td></tr>
-          <tr><td>Fin Svc Ex-Bank</td><td class="num pos">+0.25%</td></tr>
-          <tr><td>PSU Bank</td><td class="num pos">+0.40%</td></tr>
-          <tr><td>Media</td><td class="num neg">−0.70%</td></tr>
-          <tr><td>Consumer Durables</td><td class="num pos">+0.10%</td></tr>
+          <tr><td>Nifty Pharma</td><td class="num pos">strong</td></tr>
+          <tr><td>Nifty Healthcare</td><td class="num pos">strong</td></tr>
+          <tr><td>Nifty Metal</td><td class="num pos">strong</td></tr>
+          <tr><td>Nifty Energy</td><td class="num pos">firm</td></tr>
+          <tr><td>Nifty IT</td><td class="num neg">weak</td></tr>
         </tbody>
       </table>
+      <p class="muted" style="font-size: 12.5px; margin-top: 8px; font-style: italic;">Pharma, healthcare and metals led; IT was the lone major sector lower.</p>
     </div>
   </div>
-
-  <h4>Sector PE · Where Reported</h4>
-  <div class="inline-stats">
-    <div class="stat"><div class="label">Pharma</div><div class="value num">35.6×</div><div class="sub">above median</div></div>
-    <div class="stat"><div class="label">Infrastructure</div><div class="value num">24.0×</div><div class="sub">in line</div></div>
-    <div class="stat"><div class="label">Nifty 50</div><div class="value num">20.6×</div><div class="sub">benchmark</div></div>
-    <div class="stat"><div class="label">Nifty 500</div><div class="value num">26.0×</div><div class="sub">broad mean</div></div>
-  </div>
-  <p class="muted" style="font-size: 12.5px; font-style: italic;">The Nifty 50 trades near 20.6x trailing earnings while Pharma holds a clear premium at 35.6x, above its seven-year median.</p>
 
   <!-- MACRO -->
   <h2>Macro · India</h2>
@@ -736,105 +715,86 @@
     </div>
     <div class="stat">
       <div class="label">FY27 CPI</div>
-      <div class="value num">4.2%</div>
-      <div class="sub">RBI projection</div>
+      <div class="value num">4.6%</div>
+      <div class="sub">Below mid-term band</div>
     </div>
     <div class="stat">
       <div class="label">USD / INR</div>
-      <div class="value num">96.73</div>
-      <div class="sub neg">Near record low</div>
+      <div class="value num">~94.5</div>
+      <div class="sub neg">Rupee under pressure</div>
     </div>
   </div>
   <p>
-    <strong>FII / DII flows.</strong> Domestic institutions again did the heavy lifting on Wednesday. FIIs were net sellers of <span class="num neg">−₹1,597 cr</span> in the cash market while DIIs absorbed the supply at <span class="num pos">+₹1,968 cr</span> - a milder version of Tuesday, when FIIs sold <span class="num neg">−₹2,457 cr</span> against DII buying of <span class="num pos">+₹3,802 cr</span>.
-    The pattern is now familiar: with the rupee pinned near <span class="num">96.73</span> and Brent still above $110, foreign desks stay on the sell side while domestic flows hold the market up. The currency remains the binding constraint on a broader FII re-entry.
+    <strong>RBI clears the RBL Bank deal.</strong> The Reserve Bank approved UAE's Emirates NBD to acquire up to 74% of RBL Bank for around $3 billion - the largest foreign investment in an Indian bank to date. RBL will be treated as a foreign bank subsidiary.
+  </p>
+  <p>
+    <strong>Leverage curbs on equity buying.</strong> The RBI capped bank loans for purchasing shares and securities at ₹1 crore per individual, with IPO / FPO / ESOP borrowing limited to ₹25 lakh. Aimed at reining in speculative leverage - a mild headwind for broking volumes, and therefore directly relevant to your Angel One position.
   </p>
 
   <!-- NEWS -->
   <h2>News &amp; Policy</h2>
   <ul class="news-list">
-    <li><span class="tag">Trade</span>India and Sweden agreed to <strong>double bilateral trade and investment</strong> within five years, while India and Norway elevated ties into a <strong>green strategic partnership</strong>.</li>
-    <li><span class="tag">Banking</span>The RBI said prevailing systemic risk conditions <strong>do not warrant activating the countercyclical capital buffer</strong> for banks at this stage.</li>
-    <li><span class="tag">Fuel</span>Oil marketing companies pushed through a <strong>petrol and diesel price hike</strong> as elevated crude continues to squeeze refining and marketing margins.</li>
-    <li><span class="tag">Manufacturing</span>India's smartphone and handset sector keeps scaling on <strong>PLI support</strong> - record output, surging exports and fresh job creation as supply chains shift toward India.</li>
-    <li><span class="tag">Commodities</span>Retail gold in India is near <strong>₹15,705/gm for 24K</strong> and ₹14,396/gm for 22K; silver around ₹2,84,900 per kg.</li>
-    <li><span class="tag">Policy</span>The Centre directed major social media platforms to <strong>proactively remove networks</strong> spreading fake paper-leak claims and unverified exam content.</li>
-    <li><span class="tag">Results</span>A heavy Q4 earnings day lands today - <strong>DATAMATICS and WABAG</strong> among the boards meeting Thursday alongside BPCL and Trident.</li>
+    <li><span class="tag">Banking</span>RBI approves Emirates NBD's 74% acquisition of RBL Bank (~$3 bn) - the largest-ever foreign investment in an Indian bank.</li>
+    <li><span class="tag">Markets</span>RBI caps individual loans for share / securities purchase at ₹1 cr; ₹25 lakh sub-limit for IPOs, FPOs and ESOPs.</li>
+    <li><span class="tag">Trade</span>RBI extends the enhanced 450-day export-credit window for pre- and post-shipment finance through June 30, 2026.</li>
+    <li><span class="tag">Remittances</span>RBI removes the prior-approval requirement for non-bank entities forming tie-ups for outward remittance services.</li>
   </ul>
 
   <!-- GLOBAL -->
-  <h2>Global Context · Wednesday Close</h2>
+  <h2>Global Context · May 15 Close</h2>
   <div class="inline-stats">
     <div class="stat">
       <div class="label">S&amp;P 500</div>
-      <div class="value num">7,398</div>
-      <div class="sub pos">+0.60%</div>
+      <div class="value num">7,408.50</div>
+      <div class="sub neg">−1.24%</div>
     </div>
     <div class="stat">
       <div class="label">Nasdaq</div>
-      <div class="value num">~26,130</div>
-      <div class="sub pos">+1.0%</div>
-    </div>
-    <div class="stat">
-      <div class="label">Dow</div>
-      <div class="value num">~49,950</div>
-      <div class="sub pos">+1.2%</div>
+      <div class="value num">26,225</div>
+      <div class="sub neg">−1.54%</div>
     </div>
     <div class="stat">
       <div class="label">Brent</div>
-      <div class="value num">$110.34</div>
-      <div class="sub neg">−0.79%</div>
+      <div class="value num">$109.26</div>
+      <div class="sub neg">+3.35% · elevated</div>
     </div>
     <div class="stat">
       <div class="label">Gold</div>
-      <div class="value num">$4,550</div>
-      <div class="sub muted">/oz</div>
-    </div>
-    <div class="stat">
-      <div class="label">22K Gold IN</div>
-      <div class="value num">₹14,396</div>
-      <div class="sub muted">/gm approx</div>
-    </div>
-    <div class="stat">
-      <div class="label">US 10Y</div>
-      <div class="value num">~4.65%</div>
-      <div class="sub muted">Yields eased</div>
-    </div>
-    <div class="stat">
-      <div class="label">US - Iran</div>
-      <div class="value num">Talks hope</div>
-      <div class="sub muted">Negotiation odds rise</div>
+      <div class="value num">$4,558</div>
+      <div class="sub neg">−2% · 4th drop</div>
     </div>
   </div>
   <p>
-    Wall Street snapped its losing streak on Wednesday. The S&amp;P 500 added <span class="num">+0.60%</span> to 7,398 and the Dow and Nasdaq did better still, helped by cooler energy prices and rising hopes that the US and Iran may return to the negotiating table - a shift that eased the inflation worry overhanging stocks ahead of Nvidia's earnings.
-    Brent slipped to <span class="num">$110.34</span>. For India the read-across is constructive: softer crude and a steadier global risk tone help sentiment, though a rupee near <span class="num">96.73</span> keeps the foreign-flow calculus tilted toward caution.
+    Wall Street pulled back from records - both the S&amp;P 500 and Nasdaq fell over 1% Friday. Brent stayed elevated above $109 on Middle-East crosscurrents, while gold extended its decline for a fourth straight session. Elevated crude and a soft rupee are the two external pressures most likely to weigh on Indian equities into Monday.
   </p>
 
   <!-- OUTLOOK -->
-  <h2>Today's Outlook</h2>
+  <h2>Monday Outlook</h2>
 
   <div class="outlook">
-    <div class="label">May 21 · Pre-Open</div>
-    <h3>GIFT Nifty near 23,840, up about 0.8% - a firm, gap-up open is the base case for Thursday.</h3>
-    <p>After Wednesday's late recovery, the overnight signal points higher: GIFT Nifty is trading roughly 180 points above the Nifty close. The index still has work to do on the chart - it needs a sustained move through <span class="num">23,700</span> and then the <span class="num">23,900-24,000</span> band, where sellers have repeatedly emerged. A break above <span class="num">23,985</span> would open a path toward <span class="num">24,278</span>; on the downside, <span class="num">23,475</span> remains the line that keeps the recovery intact, with <span class="num">23,300</span> the firmer base.</p>
+    <div class="label">May 18 · Pre-Open</div>
+    <h3>GIFT Nifty roughly flat near 23,650. Near-term tone has turned cautious.</h3>
+    <p>The index formed a bearish candle on the weekly chart and is trading below its short-term moving averages. Weak global cues, a falling rupee, elevated crude and persistent FII outflows are the headwinds into the new week.</p>
 
     <div class="levels">
-      <div class="lvl"><div class="l">Major Support</div><div class="v">23,300 - 23,475</div></div>
-      <div class="lvl"><div class="l">Consolidation</div><div class="v">23,500 - 23,939</div></div>
-      <div class="lvl"><div class="l">Major Resistance</div><div class="v">23,985 - 24,278</div></div>
+      <div class="lvl"><div class="l">Support</div><div class="v">23,300 - 23,200</div></div>
+      <div class="lvl"><div class="l">Pivot Zone</div><div class="v">23,500 - 23,600</div></div>
+      <div class="lvl"><div class="l">Resistance</div><div class="v">24,000 - 24,250</div></div>
     </div>
 
-    <p><strong style="color: #f5f0e8;">Watch this week.</strong> DATAMATICS and WABAG Q4 results from today's board meetings, and the DEEDEV earnings call Friday May 22; the rupee through 96.75-97.00 and Brent's path after the US-Iran de-escalation chatter; the US 10-year yield and the read-across from Nvidia's earnings; and whether domestic institutional buying can keep absorbing the steady FII cash-market selling.</p>
+    <p>A sustained break below 23,200 could accelerate the move toward 23,000. The 23,500-23,600 band - former support - now acts as resistance.</p>
+
+    <p><strong style="color: #f5f0e8;">Watch this week.</strong> WABAG Q4 results (Thu May 21), follow-through on PN Gadgil's margin guidance, the market's read on RBI's equity-loan caps for Angel One, and any reaction to the Anant Raj demerger committee.</p>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="heading">Method</div>
-    <div>Daily brief, auto-generated each weekday morning at ~8:30 AM IST. Data composed from NSE, Business Standard, Business Today, Goodreturns, Kotak Neo, 5paisa, Bloomberg, CNBC, TheStreet, Fortune, Trading Economics, Univest, Screener, Tickertape, Trendlyne, Scanx, Geojit and wire reports. Individual holding LTPs and day-% values may be estimated from the most recent published quote and sector moves where Wednesday tick data was unavailable at publication time.</div>
-    <div class="small">Not investment advice. Always read scheme documents and consider your own circumstances.</div>
+    <div>Daily brief, auto-generated each weekday morning at ~8:30 AM IST. This edition manually refreshed for the portfolio reshuffle. Data composed from NSE, Business Standard, Business Today, ScanX, Whalesbook, Univest, Trendlyne, Screener, Goodreturns, RBI and Business Upturn.</div>
+    <div class="small">Not investment advice. Always read scheme and company documents and consider your own circumstances.</div>
   </footer>
 
 </div>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
